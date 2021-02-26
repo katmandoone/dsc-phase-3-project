@@ -51,7 +51,7 @@ The imbalance wasn't too bad, and apparently SMOTE doesn't support categorical d
 
 I wanted to know which descriptors seemed most indicative, so I plotted each descriptor against its mean value for each rating. A higher mean value for a single rating in a single descriptor would show that that descriptor is indicative of that rating.
 
-![image](./mean_inclusion.png)
+![image](./images/mean_inclusion.png)
 
 > This graph shows strong indications for 'Blood and Gore', 'Fantasy Violence', 'Intense Violence', 'Mild Fantasy Violence', 'No Descriptors', and 'Strong Language'.
 
@@ -69,7 +69,7 @@ The vanilla model gives and overall accuracy of 0.91 and a 0.93 recall for M-rat
 
 To try and get a little bit of a boost in the scores, I switched to the XGBoost Classifier. Its default values were not an imrovement on the Random Forest model, but with a couple tweaks from GridSearchCV, I was able to get a model with 0.91 accuracy and 0.94 recall on the test data.
 
-![image](./best_confusion_matrix.png)
+![image](./images/best_confusion_matrix.png)
 
 ## Interpreting Results
 
@@ -87,7 +87,7 @@ wrong_df = training_with_preds[training_with_preds['rating'] !=
 
 I found that in the training set, 267 games had been misclassified. I plotted the mean inclusion again to see what descriptors were common in misclassified games.
 
-![image](./mean_misclassified.png)
+![image](./images/mean_misclassified.png)
 
 > 80% of misclassified M-rated games have the 'Blood' descriptor, and nearly 100% have the 'Violence' descriptor. Almost half of misclassified E10plus-rated games have the 'Suggestive Themes' descriptor.
 
@@ -95,7 +95,7 @@ This suggests to me that in spite of the ESRB using many different descriptors f
 
 When looking only at misclassified game containing the 'Blood' or 'Violence' descriptor, the chart showed that most true M-rated games had the 'Blood' descriptor while most true T-rated games had the 'Blood and Gore' descriptor. Taking into account that 100% of these misclassified games had the 'Violence' descriptor, it suggests that the ESRB is applying content warnings and ratings inconsistently. Out of 177 games in the training set where 'Blood' and 'Violence' were the only descriptors present, 152 were correctly identified as being rated T, while 25 M-rated games were misclassified as T-ratings.
 
-![image](./mean_blood_or_violence.png)
+![image](./images/mean_blood_or_violence.png)
 
 ## Recommendations
 
