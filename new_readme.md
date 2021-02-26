@@ -16,7 +16,7 @@ The process for scraping the data is detailed in the data_gathering.ipynb notebo
 
 After scraping the data, everything was compiled into a pandas DataFrame
 
-![image](./images/original_df_snip.png)
+![image](./images/original_df_snip.PNG)
 
 ## Scrubbing the Data
 
